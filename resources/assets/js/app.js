@@ -35,6 +35,15 @@ const app = new Vue({
     methods: {
         addMessage(m) {
             this.messages.push(m)
+            axios.post('/messages', m).then(response=> {
+                ;
+            })
         }
+    },
+
+    created() {
+        axios.get('/messages').then(response=> {
+            this.messages = response.data;
+        })
     }
 });
